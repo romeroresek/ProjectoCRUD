@@ -40,7 +40,7 @@ const App = () => {
         const response = await fetch("api/contacto/Editar", {
             method: "PUT",
             headers: {
-                'Content-Type':'application/json;charset=utf-8'
+                'Content-Type': 'application/json;charset=utf-8'
             },
             body: JSON.stringify(contacto)
         })
@@ -50,24 +50,40 @@ const App = () => {
             mostrarContactos();
         }
     }
-    
+
+
+    const eliminarContacto = async (id) => {
+        var respuesta = window.confirm("Do you what to delete de contact?")
+        if (!respuesta) {
+            return;
+        }
+        const response = await fetch("api/contacto/Eliminar/"+id, {
+            method: "DELETE"
+            })
+
+        if (response.ok) {
+            mostrarContactos();
+        }
+    }
+
     return (
         <Container>
             <Row className="mt-5">
                 <Col sm="12">
                     <Card>
                         <CardHeader>
-                            <h5>Lista de contacto</h5>
+                            <h5>Contact List</h5>
                         </CardHeader>
                         <CardBody>
                             <Button size="sm" color="success"
                                 onClick={() => setMostrarModal(!mostrarModal)}
-                            >Nuevo contacto</Button>
+                            >New Contact</Button>
                             <hr></hr>
                             <TablaContacto data={contactos}
                                 setEditar={setEditar}
                                 mostrarModal={mostrarModal}
                                 setMostarModal={setMostrarModal}
+                                eliminarContacto={eliminarContacto }
                             />
                         </CardBody>
                     </Card>

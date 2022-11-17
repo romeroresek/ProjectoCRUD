@@ -1,6 +1,6 @@
 ﻿import { Table, Button } from "reactstrap"
 
-const TablaContacto = ({ data, setEditar, mostrarModal, setMostarModal }) => {
+const TablaContacto = ({ data, setEditar, mostrarModal, setMostarModal, eliminarContacto }) => {
     const enviarDatos = (contacto) => {
         setEditar(contacto)
         setMostarModal(!mostrarModal)
@@ -10,9 +10,9 @@ const TablaContacto = ({ data, setEditar, mostrarModal, setMostarModal }) => {
         <Table striped responsive>
             <thead>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Correo</th>
-                    <th>Telefono</th>
+                    <th>Name</th>
+                    <th>email</th>
+                    <th>Phone</th>
                     <th></th>
                 </tr>
             </thead>
@@ -20,7 +20,7 @@ const TablaContacto = ({ data, setEditar, mostrarModal, setMostarModal }) => {
                 {
                     (data.length < 1) ? (
                         <tr>
-                            <td colSpan="4">Sin registros</td>
+                            <td colSpan="4">No contacts</td>
                         </tr>
                     ) : (
                             data.map((item) => (
@@ -31,8 +31,10 @@ const TablaContacto = ({ data, setEditar, mostrarModal, setMostarModal }) => {
                                     <td>
                                         <Button color="primary" size="sm" className="me-2"
                                             onClick={() => enviarDatos(item) }
-                                        >Editar</Button>
-                                        <Button color="danger" size="sm">Eliminar</Button>
+                                        >Edit</Button>
+                                        <Button color="danger" size="sm"
+                                            onClick={() => eliminarContacto(item.idContacto)}
+                                        >Delete</Button>
                                     </td>
                                 </tr>
                                 ))

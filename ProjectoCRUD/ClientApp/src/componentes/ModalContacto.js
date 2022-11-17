@@ -57,23 +57,23 @@ const ModalContacto = ({ mostrarModal, setMostarModal, guardarContacto,editar, s
             <ModalBody>
                 <Form>
                     <FormGroup>
-                        <Label>Nombre</Label>
+                        <Label>Name</Label>
                         <Input name="nombre" onChange={(e) => actualizarDato(e)} value={contacto.nombre} />
                     </FormGroup>
                     <FormGroup>
-                        <Label>Correo</Label>
+                        <Label>email</Label>
                         <Input name="correo" onChange={(e) => actualizarDato(e)} value={contacto.correo} />
                     </FormGroup>
                     <FormGroup>
-                        <Label>Telefono</Label>
+                        <Label>Phone</Label>
                         <Input name="telefono" onChange={(e) => actualizarDato(e)} value={contacto.telefono} />
                     </FormGroup>
                 </Form>
             </ModalBody>
 
             <ModalFooter>
-                <Button color="primary" size="sm" onClick={enviarDatos}>Guardar </Button>
-                <Button color="danger" size="sm" onClick={cerrarModal}>Cerrar </Button>
+                <Button color="primary" size="sm" onClick={enviarDatos}>Save </Button>
+                <Button color="danger" size="sm" onClick={cerrarModal}>Close </Button>
             </ModalFooter>
         </Modal>
         )
